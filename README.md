@@ -76,45 +76,58 @@ X-Internal-Token
 ---
 
 ## API Usage
-### Register
-POST http://localhost:8080/api/auth/register
 
-Body:
+### 1. Register
 
+* **URL:** `http://localhost:8080/api/auth/register`
+* **Method:** `POST`
+* **Headers:** `Content-Type: application/json`
+
+**Request Body:**
+```json
 {
-"email": "test@test.com",
-"password": "123456"
+  "email": "test@test.com",
+  "password": "111111"
 }
-Example
+```
 
-### Login
-POST http://localhost:8080/api/auth/login
+### 2. Login
 
-Body:
+* **URL:** `http://localhost:8080/api/auth/login`
+* **Method:** `POST`
+* **Headers:** `Content-Type: application/json`
+
+**Request Body:**
+```json
 {
-"email": "test@test.com",
-"password": "123456"
+  "email": "test@test.com",
+  "password": "111111"
 }
+Response (200 OK):
 
-Response:
+JSON
 {
-"token": "JWT_TOKEN"
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
 }
+```
 
+### 3. Process Request 
 
-### Process request
-POST http://localhost:8080/api/process
+* **URL:** `http://localhost:8080/api/process`
+* **Method:** `POST`
+* **Headers:**
+  * `Content-Type: application/json`
+  * `Authorization: Bearer <jwt_token>`
 
-Headers:
-
-Authorization: Bearer <token>
-
-Body:
+**Request Body:**
+```json
 {
-"text": "hello"
+  "text": "hello"
 }
+Response (200 OK):
 
-Response:
+JSON
 {
-"result": "HELLO"
+  "result": "HELLO"
 }
+```
